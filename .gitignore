@@ -1,0 +1,4 @@
+.vscode
+__pycache__/
+modelnet40_normal_resampled/
+outputs/

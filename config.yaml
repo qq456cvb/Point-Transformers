@@ -1,0 +1,12 @@
+batch_size: 24
+epoch: 200
+learning_rate: 1e-3
+gpu: 1
+num_point: 1024
+optimizer: Adam
+weight_decay: 1e-4
+normal: True
+
+hydra:
+  run:
+    dir: outputs
