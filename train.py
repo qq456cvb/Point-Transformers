@@ -16,8 +16,7 @@ import provider
 import importlib
 import shutil
 import hydra
-from model import PointTransformer
-
+import omegaconf
 
 
 def test(model, loader, num_class=40):
@@ -41,8 +40,10 @@ def test(model, loader, num_class=40):
     instance_acc = np.mean(mean_correct)
     return instance_acc, class_acc
 
-@hydra.main(config_name='config')
+
+@hydra.main(config_path='config', config_name='config')
 def main(args):
+    omegaconf.OmegaConf.set_struct(args, False)
 
     '''HYPER PARAMETER'''
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
@@ -60,10 +61,11 @@ def main(args):
     testDataLoader = torch.utils.data.DataLoader(TEST_DATASET, batch_size=args.batch_size, shuffle=False, num_workers=4)
 
     '''MODEL LOADING'''
-    num_class = 40
-    shutil.copy(hydra.utils.to_absolute_path('model.py'), '.')
+    args.num_class = 40
+    args.input_dim = 6 if args.normal else 3
+    shutil.copy(hydra.utils.to_absolute_path('models/{}/model.py'.format(args.model.name)), '.')
 
-    classifier = PointTransformer(512, 256, 64, m=4, k=64, n_c=40, d_points=6).cuda()
+    classifier = getattr(importlib.import_module('models.{}.model'.format(args.model.name)), 'PointTransformer')(args).cuda()
     criterion = torch.nn.CrossEntropyLoss()
 
     try:
@@ -87,7 +89,7 @@ def main(args):
     else:
         optimizer = torch.optim.SGD(classifier.parameters(), lr=0.01, momentum=0.9)
 
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=20, gamma=0.7)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=50, gamma=0.3)
     global_epoch = 0
     global_step = 0
     best_instance_acc = 0.0

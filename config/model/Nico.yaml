@@ -1,0 +1,9 @@
+# @package _group_
+n_head: 8
+m: 4
+k: 64
+global_k: 128
+global_dim: 512
+local_dim: 256
+reduce_dim: 64
+name: Nico
