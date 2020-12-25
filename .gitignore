@@ -2,3 +2,4 @@
 __pycache__/
 modelnet40_normal_resampled/
 outputs/
+log/

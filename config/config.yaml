@@ -8,8 +8,12 @@ weight_decay: 1e-4
 normal: True
 
 defaults:
-  - model: Nico
+  - model: Menghao
 
 hydra:
   run:
-    dir: outputs/${model}
+    dir: log/${model.name}
+
+  sweep:
+    dir: log
+    subdir: ${model.name}
