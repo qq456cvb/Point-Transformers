@@ -13,7 +13,12 @@ Change which method to use in `config/config.yaml` and run
 python train.py
 ```
 ### Results
-TBA
+Using Adam with learning rate 1e-3, decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). We have the following result:
+| Model | Accuracy |
+|--|--|
+| Hengshuang |  89.6|
+| Menghao | 71.6 |
+| Nico |  85.5 |
 
 ### Miscellaneous
 Some code and training settings are borrowed from https://github.com/yanx27/Pointnet_Pointnet2_pytorch.
