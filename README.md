@@ -13,11 +13,11 @@ Change which method to use in `config/config.yaml` and run
 python train.py
 ```
 ### Results
-Using Adam with learning rate 1e-3, decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). We have the following result:
+Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). For Hengshuang and Nico, initial LR is 1e-3 (maybe fine-tuned later); for Menghao, initial LR is 1e-4, as suggested by the [author](https://github.com/MenghaoGuo). ModelNet40 classification results (instance average) are listed below:
 | Model | Accuracy |
 |--|--|
 | Hengshuang |  89.6|
-| Menghao | 71.6 |
+| Menghao | 92.6 |
 | Nico |  85.5 |
 
 ### Miscellaneous
