@@ -13,7 +13,7 @@ Change which method to use in `config/config.yaml` and run
 python train.py
 ```
 ### Results
-Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). For Hengshuang and Nico, initial LR is 1e-3 (maybe fine-tuned later); for Menghao, initial LR is 1e-4, as suggested by the [author](https://github.com/MenghaoGuo). ModelNet40 classification results (instance average) are listed below:
+Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). For Hengshuang and Nico, initial LR is 1e-3 (I would appreciate if someone could fine-tune these hyper-paramters); for Menghao, initial LR is 1e-4, as suggested by the [author](https://github.com/MenghaoGuo). ModelNet40 classification results (instance average) are listed below:
 | Model | Accuracy |
 |--|--|
 | Hengshuang |  89.6|
@@ -23,3 +23,4 @@ Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epoch
 ### Miscellaneous
 Some code and training settings are borrowed from https://github.com/yanx27/Pointnet_Pointnet2_pytorch.
 Code for [PCT: Point Cloud Transformer (Meng-Hao Guo et al.)](https://arxiv.org/abs/2012.09688) is adapted from the author's Jittor implementation https://github.com/MenghaoGuo/PCT.
+
