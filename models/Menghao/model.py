@@ -105,7 +105,7 @@ class StackedAttention(nn.Module):
         return x
 
 
-class PointTransformer(nn.Module):
+class PointTransformerCls(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         output_channels = cfg.num_class

@@ -8,9 +8,9 @@ Recently, various methods applied transformers to point clouds: [PCT: Point Clou
 Download alignment **ModelNet** [here](https://shapenet.cs.stanford.edu/media/modelnet40_normal_resampled.zip) and save in `modelnet40_normal_resampled`.
 
 ### Run
-Change which method to use in `config/config.yaml` and run
+Change which method to use in `config/cls.yaml` and run
 ```
-python train.py
+python train_cls.py
 ```
 ### Results
 Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epochs; data augmentation follows [this repo](https://github.com/yanx27/Pointnet_Pointnet2_pytorch). For Hengshuang and Nico, initial LR is 1e-3 (I would appreciate if someone could fine-tune these hyper-paramters); for Menghao, initial LR is 1e-4, as suggested by the [author](https://github.com/MenghaoGuo). ModelNet40 classification results (instance average) are listed below:
@@ -19,6 +19,19 @@ Using Adam with learning rate decay 0.3 for every 50 epochs, train for 200 epoch
 | Hengshuang |  89.6|
 | Menghao | 92.6 |
 | Nico |  85.5 |
+
+
+## Part Segmentation
+### Data Preparation
+Download alignment **ShapeNet** [here](https://shapenet.cs.stanford.edu/media/shapenetcore_partanno_segmentation_benchmark_v0_normal.zip) and save in `data/shapenetcore_partanno_segmentation_benchmark_v0_normal`.
+
+### Run
+Change which method to use in `config/partseg.yaml` and run
+```
+python train_partseg.py
+```
+### Results
+Currently only Hengshuang's method is implemented.
 
 ### Miscellaneous
 Some code and training settings are borrowed from https://github.com/yanx27/Pointnet_Pointnet2_pytorch.

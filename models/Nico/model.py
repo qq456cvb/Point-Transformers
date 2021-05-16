@@ -82,7 +82,7 @@ class GlobalFeatureGeneration(nn.Module):
         return out, x
     
     
-class PointTransformer(nn.Module):
+class PointTransformerCls(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         d_model_l, d_model_g, d_reduce, m, k, n_c, d_points, n_head \
