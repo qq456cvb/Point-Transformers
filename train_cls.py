@@ -17,7 +17,7 @@ import importlib
 import shutil
 import hydra
 import omegaconf
-
+import torch
 
 def test(model, loader, num_class=40):
     mean_correct = []
@@ -66,6 +66,7 @@ def main(args):
     shutil.copy(hydra.utils.to_absolute_path('models/{}/model.py'.format(args.model.name)), '.')
 
     classifier = getattr(importlib.import_module('models.{}.model'.format(args.model.name)), 'PointTransformerCls')(args).cuda()
+    classifier = torch.nn.DataParallel(classifier)
     criterion = torch.nn.CrossEntropyLoss()
 
     try:
