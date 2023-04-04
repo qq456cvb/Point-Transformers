@@ -50,8 +50,6 @@ def main(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     logger = logging.getLogger(__name__)
 
-    print(args.pretty())
-
     root = hydra.utils.to_absolute_path('data/shapenetcore_partanno_segmentation_benchmark_v0_normal/')
 
     TRAIN_DATASET = PartNormalDataset(root=root, npoints=args.num_point, split='trainval', normal_channel=args.normal)

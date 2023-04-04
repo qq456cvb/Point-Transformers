@@ -1,5 +1,5 @@
 numpy
 torch
 tqdm
-hydra-core
+hydra-core==1.2
 omegaconf
