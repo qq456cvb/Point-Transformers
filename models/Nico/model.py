@@ -86,7 +86,7 @@ class PointTransformerCls(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         d_model_l, d_model_g, d_reduce, m, k, n_c, d_points, n_head \
-            = cfg.model.global_dim, cfg.model.local_dim, cfg.model.reduce_dim, cfg.model.m, cfg.model.k, cfg.num_class, cfg.input_dim, cfg.model.n_head
+            = cfg.model.local_dim, cfg.model.global_dim, cfg.model.reduce_dim, cfg.model.m, cfg.model.k, cfg.num_class, cfg.input_dim, cfg.model.n_head
         self.lfg = LocalFeatureGeneration(d_model=d_model_l, m=m, k=k, d_points=d_points)
         self.gfg = GlobalFeatureGeneration(d_model=d_model_g, k=cfg.model.global_k, d_points=d_points)
         self.lg_att = MultiHeadAttention(n_head, d_model_l, d_model_g, d_model_l // n_head, d_model_l // n_head)

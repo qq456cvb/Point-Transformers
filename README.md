@@ -82,6 +82,29 @@ python train_partseg.py model=Hengshuang
 
 Logs and checkpoints are written to `log/partseg/<model>/`. Currently only Hengshuang's architecture has a segmentation head implemented.
 
+### Test & visualize
+
+After training, evaluate the saved checkpoint and export colored point clouds:
+
+```bash
+python test_partseg.py model=Hengshuang              # evaluate + export 20 shapes
+python test_partseg.py model=Hengshuang num_visual=50
+```
+
+This reports accuracy / class-avg mIoU / instance-avg mIoU on the test split and, for each exported shape, writes two ASCII `.ply` files to `log/partseg/<model>/visual/`:
+
+- `<idx>_<category>_pred.ply` — predicted part labels (colored)
+- `<idx>_<category>_gt.ply` — ground-truth part labels (colored)
+
+Open them in any point cloud viewer. For example, with [Open3D](http://www.open3d.org/):
+
+```python
+import open3d as o3d
+o3d.visualization.draw_geometries([o3d.io.read_point_cloud("log/partseg/Hengshuang/visual/0_Airplane_pred.ply")])
+```
+
+The script runs on GPU if available and otherwise falls back to CPU.
+
 ## License
 
 MIT — see [LICENSE](LICENSE).
