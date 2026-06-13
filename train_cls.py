@@ -49,7 +49,7 @@ def main(args):
     os.environ["CUDA_VISIBLE_DEVICES"] = str(args.gpu)
     logger = logging.getLogger(__name__)
 
-    print(args.pretty())
+    print(omegaconf.OmegaConf.to_yaml(args))
 
     '''DATA LOADING'''
     logger.info('Load dataset ...')
